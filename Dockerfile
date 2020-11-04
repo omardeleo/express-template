@@ -1,10 +1,11 @@
 FROM node:current-alpine
 
 WORKDIR /app
+RUN npm install -g nodemon
 COPY package*.json ./
 
 RUN npm install
 
 COPY . ./
 
-CMD [ "node", "./src/bin/www" ]
+CMD [ "nodemon", "./src/bin/www" ]
