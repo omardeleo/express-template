@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const db = require("../db/models");
+
+const router = express.Router();
 
 const incrementCounter = async (counter) => {
   const { count } = counter;
@@ -22,9 +23,9 @@ const createCounter = async () => {
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   const counters = await db.Counter.findAll();
-  const counter = counters.length ?
-    await incrementCounter(counters[0]) :
-    await createCounter();
+  const counter = counters.length
+    ? await incrementCounter(counters[0])
+    : await createCounter();
 
   res.render('index', { title: 'Express', counter: counter });
 });
