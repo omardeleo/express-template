@@ -1,17 +1,32 @@
-develop: clean build run ## Alias for: clean build run.
+VOLUME=$(shell basename $(PWD))
 
-help: ## Prints help for targets with comments.
-	@grep -E '^[a-zA-Z._-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
+develop: clean build migrations.run run
 
-clean: ## Remove stopped Docker services.
+clean:
 	docker-compose rm -vf
 
-build: ## Build Docker services.
+build:
 	docker-compose build
 
-run: ## Start Docker services.
+run:
 	docker-compose up
 
-pr: ## Prepare for pull request
-	npm run lint
-	npm run test
+shell:
+	docker-compose run express \
+		sh
+
+postgres.data.delete: clean
+	docker volume rm $(VOLUME)_postgres
+
+postgres.start:
+	docker-compose up -d postgres
+	docker-compose exec postgres \
+		sh -c 'while ! nc -z postgres 5432; do sleep 0.1; done'
+
+migrations.blank:
+	docker-compose up -d express
+	docker-compose exec express npx sequelize-cli migration:generate --name migration-skeleton
+
+migrations.run:
+	docker-compose up -d express
+	docker-compose exec express npx sequelize-cli db:migrate
