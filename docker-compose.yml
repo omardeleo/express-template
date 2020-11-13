@@ -19,6 +19,12 @@ services:
       shipyard.route: '/'
     build:
       context: .
+    environment:
+      DB_USER: 'obscure-user'
+      DB_PASSWORD: 'obscure-password'
+      DB_NAME: 'app'
+      DB_HOST: 'postgres'
+      DB_PORT: '5432'
     depends_on:
       - 'postgres'
     ports:
