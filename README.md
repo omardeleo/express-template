@@ -1,24 +1,20 @@
-[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
-
-# Shipyard template: Express
+# The Express Template &middot; [![Version Badge](https://img.shields.io/badge/version-1.0.0-brightgreen)](#)
 
 A basic Express starter project to get started with Docker Compose and Shipyard.
 
-## Getting Started
+## Includes
 
-To get started take a look at the Makefile in the root directory, there are some helpful commands to get you started ex:
-
-```
-make develop
-```
-
-To view the running app, open your web browser and navigate to:
-```
-http://localhost:3000/
-```
+- [Pug](https://pugjs.org/api/getting-started.html)
+- [Sequelize CLI](https://github.com/sequelize/cli)
+- [nodemon](https://nodemon.io/)
 
 ## Dependencies
 
-`docker`
-`docker-compose`
-`make`
+- [Make](https://www.gnu.org/software/make/manual/make.html)
+- [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
+
+## Getting Started
+
+- Run `make develop` at the root of this project.
+- Visit the app at http://localhost:3000.
+- Make your code changes! The app will reload whenever you save.
