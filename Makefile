@@ -1,6 +1,6 @@
 VOLUME=$(shell basename $(PWD))
 
-develop: clean build scaffold migrations.run run
+develop: clean build migrations.run run
 
 clean:
 	docker-compose rm -vf
@@ -30,12 +30,3 @@ migrations.blank:
 migrations.run:
 	docker-compose up -d express
 	docker-compose exec express npx sequelize-cli db:migrate
-
-express.scaffold:
-	mkdir -p src/public/javascripts
-	mkdir -p src/public/images
-
-sequelize.scaffold:
-	mkdir -p src/db/seeders
-
-scaffold: express.scaffold sequelize.scaffold
