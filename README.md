@@ -3,13 +3,12 @@
 A basic Express starter project to get started with Docker Compose and Shipyard.
 
 ## Includes
-
+- [Express](https://expressjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Sequelize](https://sequelize.org/)
 - [Sequelize CLI](https://github.com/sequelize/cli)
 - [Pug](https://pugjs.org/api/getting-started.html)
 - [nodemon](https://nodemon.io/)
-
 
 ## Dependencies
 
